@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Enquiry {
+public class Enquire {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long enquiryId;
-private String enquiryName;
+private Long employeeId;
+private String employeeName;
 private Integer age;
 private String email;
 private String mobileNo;
