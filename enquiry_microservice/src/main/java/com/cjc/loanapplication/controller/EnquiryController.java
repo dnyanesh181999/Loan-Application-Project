@@ -28,6 +28,7 @@ public class EnquiryController {
 	
 	@Autowired
 	EnquiryServicei es;
+	
 	@PostMapping(value ="/enquiry")
 	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e) {
 		e.setCibilScore((long)0);
