@@ -26,11 +26,13 @@ private Integer enquiryId;
 private String enquiryName;
 
 private Integer age;
+
 @NotEmpty(message = "Enquiry name not null and empty")
 @Email(message = "Enter Correct Email Id")
 private String email;
 
 @NotEmpty(message = "Enquiry name not null and empty")
+@Pattern(regexp = "^[789][0-9]{9}$",message = "Shuld be required 10 Number")
 private String mobileNo;
 
 @NotEmpty(message = "Enquiry name not null and empty")
@@ -39,7 +41,6 @@ private String pancardNo;
 
 @NotEmpty
 @Size(min =12,max=12, message = "Addhar number must be 12 digit")
-
 private String aadharNo;
 
 private Boolean remark;  

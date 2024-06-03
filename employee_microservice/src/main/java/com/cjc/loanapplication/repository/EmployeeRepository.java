@@ -7,4 +7,6 @@ import com.cjc.loanapplication.model.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 
+	Employee findByUserNameAndPassword(String userName, String password);
+
 }
