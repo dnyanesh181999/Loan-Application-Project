@@ -101,31 +101,6 @@ public class GlobalExceptionHandler
 	public  ResponseEntity<APIError> TransactionSystemException(org.springframework.transaction.TransactionSystemException e,HttpServletRequest request)
 	{
 
-	@ExceptionHandler(EmployeeNotSaveException.class)
-	public ResponseEntity<APIError> employeeNotSavedExceptionHandler(EmployeeNotSaveException e,HttpServletRequest request)
-	{
-		APIError apierror=new APIError();
-		apierror.setDate(new Date());
-		apierror.setStatuscode(HttpStatus.BAD_REQUEST.value());
-		apierror.setMessage(e.getMessage());
-		apierror.setPath(request.getRequestURI());
-		apierror.setHttpmessage(HttpStatus.BAD_REQUEST);
-		return new ResponseEntity<APIError>(apierror,HttpStatus.BAD_REQUEST);
-	}
-	
-	@ExceptionHandler(UserNameAndPasswordNotFoundException.class)
-	public ResponseEntity<APIError> usernameANdPasswordNotFoundExceptionHandler(UserNameAndPasswordNotFoundException e,HttpServletRequest request)
-	{
-		APIError apierror=new APIError();
-		apierror.setDate(new Date());
-		apierror.setStatuscode(HttpStatus.BAD_REQUEST.value());
-		apierror.setMessage(e.getMessage());
-		apierror.setPath(request.getRequestURI());
-		apierror.setHttpmessage(HttpStatus.BAD_REQUEST);
-		return new ResponseEntity<APIError>(apierror,HttpStatus.BAD_REQUEST);
-	}
-
-
 		APIError error =new APIError();
 		 error.setDate(new Date());
 		 error.setStatuscode(HttpStatus.BAD_REQUEST.value());

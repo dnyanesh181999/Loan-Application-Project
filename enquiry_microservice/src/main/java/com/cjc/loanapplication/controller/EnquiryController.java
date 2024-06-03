@@ -35,8 +35,7 @@ public class EnquiryController {
 
 	@PostMapping(value ="/enquiry")
 
-	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e) 
-	{
+	
 	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e, EmailForEnquiry e1) {
 
 		e.setCibilScore((long)0);

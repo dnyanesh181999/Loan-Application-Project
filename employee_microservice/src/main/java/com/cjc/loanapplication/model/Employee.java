@@ -30,50 +30,22 @@ public class Employee {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Integer employeeId;
-
-
-
-
 @NotEmpty(message = "customerName is mandatory")
 @Size(min = 6, message = "customerName must be at min lenght  6 characters only ")
 @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Name can only contain letters and spaces")
 private String employeeName;
-
-
-
 @NotEmpty(message = "Username should be  mandatory")
 @Size(min = 6, max=6,message = "userName must be at min lenght  6 characters only ")
 private String userName;
-
 @NotEmpty(message = "password should be  mandatory")
 @Size(min = 8,max=8, message = "customerName must be at min lenght  8 characters only ")
 private String password;
-
-
 @NotEmpty(message = "Email is mandatory")
 @Email(message = "Email should be valid")
-
 private String employeeMail;
-
 @Size(min = 10, max=10 ,message = " mobileno should only  10 digit number long")
 @Pattern(regexp ="^[0-9]{10}$",message="contact should only numbers no aphhabets neither special characters")
 private String employeeContact;
-
-
-
-
-//@NotEmpty(message = "")
-private String employeeName;
-//@NotEmpty(message = "")
-private String userName;
-//@NotEmpty(message = "")
-private String password;
-//@NotEmpty(message = "")
-private String employeeMail;
-//@NotEmpty(message = "")
-private Long employeeContact;
-//@NotEmpty(message = "")
-
 @Enumerated(EnumType.STRING)
 private UserType userType;
 
