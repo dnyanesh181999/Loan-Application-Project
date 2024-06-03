@@ -34,11 +34,16 @@ public class EnquiryController {
 	EmailEnquiryServicei esi;
 
 	@PostMapping(value ="/enquiry")
+
+	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e) 
+	{
 	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e, EmailForEnquiry e1) {
+
 		e.setCibilScore((long)0);
 		e.setRemark(false);
 		Enquiry enq=es.saveEnquriy(e);
-		if(enq!=null) {
+		if(enq!=null) 
+		{
 			log.info("new enquiry saved sucessfully ");
 			esi.sendEmail(e,e1);
 			
@@ -49,6 +54,12 @@ public class EnquiryController {
 			return new ResponseEntity<Enquiry>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	
+	
+	
+	
+	
 	@GetMapping(value ="/enquiry/{enquiryId}")
 	public ResponseEntity<Enquiry> getEnquiryById(@PathVariable Integer enquiryId){
 		if(enquiryId>0) {
@@ -68,6 +79,9 @@ public class EnquiryController {
 		}
 	}
 	
+	
+	
+	
 	@GetMapping(value = "/enquiries")
 	public ResponseEntity<List<Enquiry>>getAllEnquiry(){
 		
@@ -76,6 +90,8 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(listEnquires,HttpStatus.OK);
 		
 	}
+	
+	
 	
 	@GetMapping(value = "/enquiryByName/{enquiryName}")
 	public ResponseEntity<Enquiry>getEnquiryByName(@PathVariable String enquiryName){
@@ -91,6 +107,8 @@ public class EnquiryController {
 	
 	
 	}
+	
+	
 	
 	
 	@PutMapping(value ="/enquiry/{enquiryId}")
