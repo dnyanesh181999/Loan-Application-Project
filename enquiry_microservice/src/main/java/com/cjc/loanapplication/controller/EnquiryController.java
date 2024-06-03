@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cjc.loanapplication.exceptions.EnquiryDataNotUpdateException;
 import com.cjc.loanapplication.exceptions.InvalidEnquiryIdException;
-
+import com.cjc.loanapplication.model.EmailForEnquiry;
 import com.cjc.loanapplication.model.Enquiry;
+import com.cjc.loanapplication.servicei.EmailEnquiryServicei;
 import com.cjc.loanapplication.servicei.EnquiryServicei;
 
 import jakarta.validation.Valid;
@@ -28,17 +29,25 @@ public class EnquiryController {
 	
 	@Autowired
 	EnquiryServicei es;
+
+	@Autowired
+	EmailEnquiryServicei esi;
+
 	@PostMapping(value ="/enquiry")
+
 	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e) 
 	{
+	public ResponseEntity<Enquiry> saveEnquiry(@Valid @RequestBody Enquiry e, EmailForEnquiry e1) {
+
 		e.setCibilScore((long)0);
 		e.setRemark(false);
 		Enquiry enq=es.saveEnquriy(e);
 		if(enq!=null) 
 		{
 			log.info("new enquiry saved sucessfully ");
+			esi.sendEmail(e,e1);
+			
 			return new ResponseEntity<Enquiry>(enq,HttpStatus.CREATED);
-		
 		}
 		else {
 			log.error("Failed to saved enquiry");

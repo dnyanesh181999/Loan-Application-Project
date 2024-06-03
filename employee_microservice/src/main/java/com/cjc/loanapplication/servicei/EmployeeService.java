@@ -19,4 +19,13 @@ public interface EmployeeService {
 	public Employee updateEmployee(Integer employeeId, Employee emp);
 
 
+import com.cjc.loanapplication.model.Employee;
+
+public interface EmployeeService {
+
+	Employee saveEmployee(Employee e);
+
+	Employee getSingleEmployeeData(String userName, String password);
+
+
 }
